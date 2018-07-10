@@ -44,4 +44,4 @@ console.log("n = " + n);
 let p = (h + r - 7 * m + 114) % 31;
 console.log("p = " + p);
 
-console.log("In 2015, easter falls on 4/20");
+console.log("In " + y + ", easter falls on " + n + "/" + (p + 1));

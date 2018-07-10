@@ -1,9 +1,18 @@
 // Author: Shannon Harveys
 
-console.log('Hello world!!!');
+let readline = require('readline-sync');
 
-console.log('I found out 1 + 1 = 2!!!');
+let age =
+  Number (readline.question('what is your age?'));
 
-console.log('That is so awesome!!!!');
+console.log('In 2028 your age will be ' + (age + 10) + ' years old');
 
-console.log(':)');
+
+
+// console.log('Hello world!!!');
+//
+// console.log('I found out 1 + 1 = 2!!!');
+//
+// console.log('That is so awesome!!!!');
+//
+// console.log(':)');
