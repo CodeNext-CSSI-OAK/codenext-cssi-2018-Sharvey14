@@ -1,4 +1,4 @@
-//Author: FirstName LastName
+//Author: Shannon Harvey
 
 /******************************************************************************
                                    sumDouble
@@ -16,7 +16,11 @@ sumDouble(2, 2) → 8
 
 
 function sumDouble(a, b) {
-
+  if (a === b){
+    return (a + b) * 2 ;
+  } else {
+    return a + b;
+  }
 }
 
 
@@ -33,9 +37,14 @@ makes10(1, 9) → true
 
 *******************************************************************************/
 
-
 function makes10(a, b) {
-
+if (a === 10 || b === 10) {
+  return true;
+} else if ((a + b) === 10) {
+  return true;
+} else {
+  return false;
+}
 }
 
 
@@ -55,7 +64,15 @@ parrotTrouble(false, 6) → false
 *******************************************************************************/
 
 function parrotTrouble(talking, hour) {
-
+  if (talking === true) {
+    if(7 > hour || 20 < hour){
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
 }
 
 
@@ -76,7 +93,19 @@ alarmClock(0, false) → "10:00"
 *******************************************************************************/
 
 function alarmClock(day, vacation) {
-
+  if (vacation === true) {
+    if (0 < day && 6 > day) {
+      console.log("10:00");
+    } else {
+      console.log("off");
+    }
+  } else {
+    if (0 < day && 6 > day) {
+      console.log("7:00");
+    } else {
+      console.log("10:00");
+    }
+  }
 }
 
 
@@ -98,7 +127,26 @@ caughtSpeeding(65, true) → 0
 *******************************************************************************/
 
 function caughtSpeeding(speed, isBirthday) {
-
+  if (isBirthday === true) {
+    (speed += 5);
+    if (60 >= speed) {
+      console.log("0");
+    } else {
+      if (61 <= speed && 80 >= speed) {
+        console.log("1");
+      } else {
+        console.log("2");
+      }
+    }
+  } else {
+    if (60 >= speed) {
+      console.log("0");
+    } else {
+      if (61 <= speed && 80 >= speed) {
+        console.log("1");
+      } else {
+        console.log("2");
+  }
 }
 
 /****************************************************************************
