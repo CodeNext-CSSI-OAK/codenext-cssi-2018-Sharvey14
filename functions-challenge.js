@@ -95,15 +95,15 @@ alarmClock(0, false) → "10:00"
 function alarmClock(day, vacation) {
   if (vacation === true) {
     if (0 < day && 6 > day) {
-      console.log("10:00");
+      return "10:00";
     } else {
-      console.log("off");
+      return "off";
     }
   } else {
     if (0 < day && 6 > day) {
-      console.log("7:00");
+      return "7:00";
     } else {
-      console.log("10:00");
+      return "10:00";
     }
   }
 }
@@ -127,28 +127,20 @@ caughtSpeeding(65, true) → 0
 *******************************************************************************/
 
 function caughtSpeeding(speed, isBirthday) {
-  if (isBirthday === true) {
-    (speed += 5);
-    if (60 >= speed) {
-      console.log("0");
+  if (isBirthday) {
+    speed -= 5;
+  }
+    if (speed <= 60) {
+      return 0;
     } else {
-      if (61 <= speed && 80 >= speed) {
-        console.log("1");
+      if (speed >= 61 && speed <= 80) {
+        return 1;
       } else {
-        console.log("2");
+        if(speed >= 81)
+        return 2;
       }
     }
-  } else {
-    if (60 >= speed) {
-      console.log("0");
-    } else {
-      if (61 <= speed && 80 >= speed) {
-        console.log("1");
-      } else {
-        console.log("2");
   }
-}
-
 /****************************************************************************
                                     Tests
 *****************************************************************************/
