@@ -11,8 +11,10 @@ var readline = require("readline-sync");
 function printGreeting() {
   console.log("--------------------------------------------------------------");
   console.log("                        Talking Numbers");
-  cons
+  console.log("--------------------------------------------------------------");
   console.log("HIII HIIII MY NAME IS SHANNON!!! HOW ARE YOU?!!! HOW IS YOUR DAY!!!!???");
+  //let wordForm = Number (readline.question("Please enter any number between 0 and 9999: "));
+
 }
 
 /******************************************************************************
@@ -177,28 +179,36 @@ function sayTwentyNinety(num) {
   sayNumber(9999) → "nine-thousand nine-hundred ninety-nine"
   sayNumber(75) → "seventy-five"
 *******************************************************************************/
-function sayNumber(num) {
+function sayNumber() {
+  //let wordForm = Number (readline.question("Please enter any number between 0 and 9999: "));
   let wordForm = "";
-  let one = num % 10;
-  let ten = Math.floor(num / 10) % 10;
-  let hundreds = Math.floor(num /  100) % 10;
-  let thousands = Math.floor(num / 1000);
 
-  if (num === 0){
-    wordForm = "zero";
+  if (wordForm === "0"){
+    wordForm += "zero";
   } else {
-    if(num >= 1000) {
+    let one = wordForm % 10;
+    let ten = Math.floor(wordForm / 10) % 10;
+    let hundreds = Math.floor(wordForm /  100) % 10;
+    let thousands = Math.floor(wordForm / 1000);
+
+    if(wordForm >= 1000) {
      wordForm += sayOneNine(thousands) + "-thousand ";
-     num %= 1000;
+     wordForm %= 1000;
 }
-    if (num >= 100) {
+    if (wordForm >= 100) {
       wordForm += sayOneNine(hundreds) + "-hundred ";
-      num %= 100;
+      wordForm %= 100;
     }
-    if (num >= 10 && num <= 20){
+
+    if (wordForm >= 10 && wordForm < 20){
       wordForm += sayTenNineteen((ten * 10) + one);
-    } else if (num >= 20){
-      wordForm += sayTwentyNinety(ten);
+    } else if (wordForm >= 10){
+      wordForm += sayTwentyNinety(ten) + "-";
+      wordForm %= 10;
+    }
+
+    if(wordForm < 10 && wordForm > 0) {
+      wordForm += sayOneNine(one);
     }
   }
   return wordForm;
@@ -209,11 +219,10 @@ function sayNumber(num) {
   number in word form.
 *******************************************************************************/
 function run() {
-  //console.log("input: " + 5);
-  //console.log("input: " + sayOneNine(5));
-  // console.log("input: " + sayTenNineteen(10));
-  // console.log("input: " + sayTwentyNinety(2));
-  console.log("input: " + sayNumber(3020));
+  printGreeting();
+  let wordForm = Number (readline.question("Please enter any number between 0 and 9999: "));
+  console.log("Word Form: " + sayNumber(wordForm));
+  console.log("I hope that was correct! Thank you!");
 }
 
 // Run the program!
