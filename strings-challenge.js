@@ -8,14 +8,14 @@ Given a string, return a version without the first and last char, so "Hello"
 yields "ell". The string length will be at least 2.
 
 Examples:
-withoutEnd("Hello") → "ell"
-withoutEnd("java") → "av"
-withoutEnd("coding") → "odin"
+withoutEnd("Hello") → "ell";
+withoutEnd("java") → "av";
+withoutEnd("coding") → "odin";
 
 *******************************************************************************/
 
 function withoutEnd(str) {
-
+return str.substring(1, str.length-1);
 }
 
 // Test this function.
@@ -37,7 +37,11 @@ frontAgain("ed") → true
 
 
 function frontAgain(str) {
-
+  if (str.substring(0, 2) === str.substring(str.length-2, str.length))
+    return true;
+     else {
+    return false;
+  }
 }
 
 // Test this function.
