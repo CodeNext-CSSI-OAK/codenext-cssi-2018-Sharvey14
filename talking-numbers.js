@@ -185,16 +185,17 @@ function sayNumber(num) {
 
   if (num ===  0){
     wordForm = "zero";
+    return wordForm;
   } else {
     let one = num % 10;
     let ten = Math.floor(num / 10) % 10;
     let hundreds = Math.floor(num /  100) % 10;
     let thousands = Math.floor(num / 1000);
 
-    if(thousands >= 0) {
+    if(thousands > 0) {
      wordForm += sayOneNine(thousands) + "-thousand ";
 }
-    if (hundreds >= 0) {
+    if (hundreds > 0) {
       wordForm += sayOneNine(hundreds) + "-hundred ";
     }
 
@@ -205,13 +206,9 @@ function sayNumber(num) {
     }
 
     if (ten !== 1 && one > 0) {
-      wordForm += sayTwentyNine(ten) + "-";
+      wordForm += sayTwentyNinety(ten) + "-";
       wordForm += sayOneNine(one);
     }
-    }
-
-    if(wordForm < 10 && wordForm > 0) {
-      wordForm += sayOneNine(one);
     }
     return wordForm;
   }
@@ -223,8 +220,8 @@ function sayNumber(num) {
 *******************************************************************************/
 function run() {
   printGreeting();
-  let Number = (readline.question("Please enter any number between 0 and 9999: "));
-  console.log("Word Form: " + sayNumber());
+  let input = Number (readline.question("Please enter any number between 0 and 9999: "));
+  console.log("Word Form: " + sayNumber(input));
   console.log("I hope that was correct! Thank you!");
 }
 
