@@ -179,40 +179,43 @@ function sayTwentyNinety(num) {
   sayNumber(9999) → "nine-thousand nine-hundred ninety-nine"
   sayNumber(75) → "seventy-five"
 *******************************************************************************/
-function sayNumber() {
+function sayNumber(num) {
   //let wordForm = Number (readline.question("Please enter any number between 0 and 9999: "));
   let wordForm = "";
 
-  if (wordForm === "0"){
-    wordForm += "zero";
+  if (num ===  0){
+    wordForm = "zero";
   } else {
-    let one = wordForm % 10;
-    let ten = Math.floor(wordForm / 10) % 10;
-    let hundreds = Math.floor(wordForm /  100) % 10;
-    let thousands = Math.floor(wordForm / 1000);
+    let one = num % 10;
+    let ten = Math.floor(num / 10) % 10;
+    let hundreds = Math.floor(num /  100) % 10;
+    let thousands = Math.floor(num / 1000);
 
-    if(wordForm >= 1000) {
+    if(thousands >= 0) {
      wordForm += sayOneNine(thousands) + "-thousand ";
-     wordForm %= 1000;
 }
-    if (wordForm >= 100) {
+    if (hundreds >= 0) {
       wordForm += sayOneNine(hundreds) + "-hundred ";
-      wordForm %= 100;
     }
 
-    if (wordForm >= 10 && wordForm < 20){
+    if (ten === 1){
       wordForm += sayTenNineteen((ten * 10) + one);
-    } else if (wordForm >= 10){
-      wordForm += sayTwentyNinety(ten) + "-";
-      wordForm %= 10;
+    } else if (one === 0){
+      wordForm += sayTwentyNinety(ten);
+    }
+
+    if (ten !== 1 && one > 0) {
+      wordForm += sayTwentyNine(ten) + "-";
+      wordForm += sayOneNine(one);
+    }
     }
 
     if(wordForm < 10 && wordForm > 0) {
       wordForm += sayOneNine(one);
     }
+    return wordForm;
   }
-  return wordForm;
-}
+
 /******************************************************************************
   This function simply runs your program. At the very least it should greet the
   user, ask the user to enter a number between 0 and 9999, then print that
@@ -220,8 +223,8 @@ function sayNumber() {
 *******************************************************************************/
 function run() {
   printGreeting();
-  let wordForm = Number (readline.question("Please enter any number between 0 and 9999: "));
-  console.log("Word Form: " + sayNumber(wordForm));
+  let Number = (readline.question("Please enter any number between 0 and 9999: "));
+  console.log("Word Form: " + sayNumber());
   console.log("I hope that was correct! Thank you!");
 }
 

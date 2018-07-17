@@ -1,4 +1,4 @@
-//Author: FirstName LastName
+//Author: Shannon Harvey
 
 /******************************************************************************
                                    withoutEnd()
