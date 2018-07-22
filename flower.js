@@ -94,7 +94,9 @@ var missedLetters, correctLetters, secretWord, running;
 *******************************************************************************/
 
 function printGreeting() {
-
+  console.log("--------------------------------------------------------------");
+("                          Flower                              ");
+("--------------------------------------------------------------");
 }
 
 /******************************************************************************
@@ -107,7 +109,10 @@ function printGreeting() {
 *******************************************************************************/
 
 function setupGame() {
-
+  missedLetters = ["a", "b", "c", "d", "e"];
+  correctLetters = ["f", "g", "h", "i", "j"];
+  secretWord = getRandomWord();
+  running = true;
 }
 
 /******************************************************************************
@@ -120,7 +125,12 @@ function setupGame() {
 *******************************************************************************/
 
 function printMissedLetters() {
+  let returnString = "";
+  for(let i = 0; i < missedLetters.length; i++ ){
 
+    returnString += " " + missedLetters[i];
+  }
+  console.log("missed letters: " + returnString);
 }
 
 /******************************************************************************
@@ -137,7 +147,21 @@ function printMissedLetters() {
 *******************************************************************************/
 
 function printCorrectLetters() {
+  let blanks = [];
+  for(let i = 0; i < secretWord.length; i++) {
+    blanks.push("_");
+  }
 
+  for(let i = 0; i < secretWord.length; i++){
+    if(correctLetters.indexOf(secretWord.charAt(i) >= 0)) {
+      blanks[i] = secretWord.charAt(i);
+    }
+  }
+  let blanksString = "";
+  for(let i = 0; blanks.length; i++){
+    blanksString += blanks[i] + " ";
+  }
+  console.log("Correct Letters:  " + blanksString);
 }
 
 /******************************************************************************
@@ -148,7 +172,10 @@ function printCorrectLetters() {
   player has missed so far.
 *******************************************************************************/
 function printBoard() {
-
+  let flower = "";
+  for ()
+  flower += FLOWER_PICS;
+  return flower;
 }
 
 /******************************************************************************
@@ -161,7 +188,8 @@ function printBoard() {
 *******************************************************************************/
 
 function getRandomWord() {
-
+  let RandomIndex = Math.floor(Math.random() * ((WORDS.length -1)));
+  return WORDS[RandomIndex];
 }
 
 /******************************************************************************
@@ -186,7 +214,18 @@ function getRandomWord() {
 *******************************************************************************/
 
 function getGuess(alreadyGuessed) {
-
+  while(true) {
+    let guess = READLINE.question("Guess a letter: ").toLowerCase().trim();
+    if(guess.length != 1) {
+      console.log("AYE NIGGA GUESS ONE LETTER FOOL!!");
+    } else if(alreadyGuessed.indexOf(guess) >= 0) {
+      console.log("You already said that number dummy!!");
+    } else if ("abcdefghijklmnopqrstuvwxyz".indexOf(guess) === -1) {
+      console.log("hey you ************* ******* ***** ***** type a letter fool, not a number!!");
+    } else {
+      return guess;
+    }
+  }
 }
 
 /******************************************************************************
@@ -264,7 +303,11 @@ function processGameOver() {
 *******************************************************************************/
 
 function run() {
-
+  //printGreeting();
+  printBoard();
+  //setupGame();
+  //printMissedLetters();
+  //printCorrectLetters();
 }
 
 // Run the program!
